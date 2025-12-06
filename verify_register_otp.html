@@ -1,0 +1,18 @@
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+<form method="POST">
+    <label>Enter OTP sent to your email:</label>
+    <input type="text" name="otp" required>
+    <button type="submit">Verify OTP</button>
+</form>

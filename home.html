@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h1>Welcome to Expense Tracker</h1>
+        <a href="/register"><button class="btn register-btn">Register</button></a>
+        <br><br>
+        <h2>If you already registered then login:</h2>
+        <a href="/login"><button class="btn login-btn">Login</button></a>
+    </div>
+
+    
+</body>
+</html>

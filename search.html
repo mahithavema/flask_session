@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Expenses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<body>
+    <h1>Search Expenses</h1>
+    <form method="POST" action="/search">
+        <input type="text" name="query" placeholder="Search Here">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results:</h2>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Payment Mode</th>
+        </tr>
+        {% for r in results %}
+        <tr>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+            <td>{{ r[3] }}</td>
+            <td>{{ r[4] }}</td>
+            <td>{{ r[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+<a href="/index">
+    <button type="button">Back to Home</button>
+</a>
+
+</body>
+</html>

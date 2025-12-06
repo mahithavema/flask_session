@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<body>
+    <h1>Expense Tracker - Category Summary</h1>
+
+    {% if summary %}
+    <table border="1">
+        <tr>
+            <th>Category</th>
+            <th>Total Amount</th>
+        </tr>
+        {% for row in summary %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No summary data available.</p>
+    {% endif %}
+
+    <br>
+    <a href="/index">
+        <button type="button">Back to Home</button>
+    </a>
+</body>
+</html>

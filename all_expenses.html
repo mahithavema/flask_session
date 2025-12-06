@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<body>
+    <h1>Search Results for "{{ keyword }}"</h1>
+
+    {% if expenses %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Payment</th>
+        </tr>
+        
+        {% for e in expenses %}
+        <tr>
+            <td>{{ e[0] }}</td> 
+            <td>{{ e[1] }}</td> 
+            <td>{{ e[2] }}</td> 
+            <td>{{ e[3] }}</td> 
+            <td>{{ e[4] }}</td> 
+            <td>{{ e[5] }}</td> 
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No matching expenses found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/search">
+        <button type =" button">Search</button>
+    </a> |
+    <a href="/index">
+        <button type="button">Back to login</button>
+    </a>
+</body>
+</html>
