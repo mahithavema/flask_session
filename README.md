@@ -18,7 +18,4 @@ A web-based expense management system to track daily expenses, manage categories
 - HTML, CSS
 - SMTP for emails
 
-## How to Run
-```bash
-pip install -r requirements.txt
-app2.py
+
